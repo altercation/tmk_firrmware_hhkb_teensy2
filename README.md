@@ -1,45 +1,45 @@
-FORKED REPO NOTES:
+自己开个中文翻译,方便之后研究方便FORKED REPO NOTES:
 ==================
 
-This is a quick fork of Hasu's TMK firmware (see repo address below) for review on a specific Geekhack thread. This is my first time playing around with TMK firmware and it took me some time to sort out things to get it working on a teensy 2.0 based on Smasher816's writeup here: http://geekhack.org/index.php?topic=57008.0
+通过给主板 teensy 2.0 (基于Smasher816) 编程,制作可自定义的USB键盘转换器: http://geekhack.org/index.php?topic=57008.0
 
-Note that this fork isn't current with tmk (I'm not rebasing this and if I do so I'll probably move this to a new repository) as recent commits broke my builds (even clean builds with no customization) so I'm keeping this here as a historical snapshot of working teensy 2.0 firmware.
+Note that this fork isn't current with tmk (I'm not rebasing this and if I do so I'll probably move this to a new repository) as recent commits broke my builds (even clean builds with no customization) so I'm keeping this here as a historical snapshot of working teensy 2.0 固件.
 
 Most of my customizations are in the keyboard/hhkb subdirectory. See the changes I made in the following commit: https://github.com/altercation/tmk_firrmware_hhkb_teensy2/commit/b1725e96a633bdb5ff54d397260b66210cbedead
 
-TMK Keyboard Firmware Collection
+TMK 键盘固件
 ================================
-This is a keyboard firmware with some useful features for Atmel AVR controller.
+这是一个为Atmel AVR控制器提供的的功能键盘固件。
 
-Source code is available here: <http://github.com/tmk/tmk_keyboard>
+源代码在这里: <http://github.com/tmk/tmk_keyboard>
 
 
-Features
+特性
 --------
-These features can be used in your keyboard.
+这些功能可用于您的键盘.
 
-* Multi-layer Keymap  - Multiple keyboard layouts with layer switching
-* Mouse key           - Mouse control with keyboard
-* System Control Key  - Power Down, Sleep, Wake Up and USB Remote Wake up
+* Multi-layer Keymap  - 具有层切换的多个键盘布局
+* Mouse key           - 可以通过键盘模拟鼠标
+* System Control Key  - 关机，休眠，唤醒，USB远程唤醒
 * Media Control Key   - Volume Down/Up, Mute, Next/Prev track, Play, Stop and etc
-* USB NKRO            - 120 keys(+ 8 modifiers) simultaneously
-* PS/2 mouse support  - PS/2 mouse(TrackPoint) as composite device
+* USB NKRO            - 120 键(+ 8 转换键)
+* PS/2 mouse support  - PS/2 鼠标(小红点) 符合键盘
 * Keyboard protocols  - PS/2, ADB, M0110, Sun and other old keyboard protocols
-* User Function       - Customizable function of key with writing code
-* Macro               - Very primitive at this time
+* User Function       - 具有可编写代码的键位的可定制功能
+* Macro               - 宏定义,(目前还很原始)
 * Keyboard Tricks     - Oneshot modifier and modifier with tapping feature
-* Debug Console       - Messages for debug and interaction with firmware
-* Virtual DIP Switch  - Configurations stored EEPROM(Boot Magic)
-* Locking CapsLock    - Mechanical switch support for CapsLock
-* Breathing Sleep LED - Sleep indicator with charm during USB suspend
-* Backlight           - Control backlight levels
+* Debug Console       - 调试和与固件交互的消息
+* Virtual DIP Switch  - 配置存储EEPROM（魔术引导）
+* Locking CapsLock    - 为支持大写锁机械开关
+* Breathing Sleep LED - 睡眠呼吸led灯
+* Backlight           - 控制背光功能
 
 
-Projects
+项目
 --------
-You can find some keyboard specific projects under `converter` and `keyboard` directory.
+你可以在下面目录`converter` 和 `keyboard` 中找到一些键盘特定的项目 .
 
-### converter
+### converter 转换器
 * [ps2_usb](converter/ps2_usb/)             - [PS/2 keyboard to USB][GH_ps2]
 * [adb_usb](converter/adb_usb/)             - [ADB keyboard to USB][GH_adb]
 * [m0110_usb](converter/m0110_usb)          - [Macintosh 128K/512K/Plus keyboard to USB][GH_m0110]
@@ -52,8 +52,8 @@ You can find some keyboard specific projects under `converter` and `keyboard` di
 * [ascii_usb](converter/ascii_usb/)         - ASCII(Serial console terminal) to USB
 * [ibm4704_usb](converter/ibm4704_usb)      - [IBM 4704 keyboard Converter][GH_ibm4704]
 
-### keyboard
-* [hhkb](keyboard/hhkb/)                    - [Happy Hacking Keyboard pro][GH_hhkb] **my main board**
+### keyboard 键盘
+* [hhkb](keyboard/hhkb/)                    - [Happy Hacking Keyboard pro][GH_hhkb] **我的主力键盘 (翻译者也是)**
 * [gh60](keyboard/gh60/)                    - [GH60] DIY 60% keyboard [prototype][GH60_proto] **my second board**
 * [hbkb](keyboard/hbkb/)                    - [Happy Buckling spring keyboard][GH_hbkb](IBM Model M 60% mod)
 * [hid_liber](keyboard/hid_liber/)          - [HID liberation][HID_liber] controller (by alaricljs)
@@ -84,43 +84,43 @@ You can find some keyboard specific projects under `converter` and `keyboard` di
 
 
 
-License
+License 许可证(你都懂了,反正自己把键盘给作坏了别来找我)
 -------
 **GPLv2** or later. Some protocol files are under **Modified BSD License**.
 LUFA, PJRC and V-USB stack have their own license respectively.
 
 
 
-Build Firmware and Program Controller
+如何编译烧写固件
 -------------------------------------
-See [doc/build.md](doc/build.md).
+看这个文件 [doc/build.md](doc/build.md).
 
 
 
-Change your keymap
+修改你的键位映射(我主要就像要这个功能)
 ------------------
 See [doc/keymap.md](doc/keymap.md).
 
 
 
-Magic Commands
+魔术命令
 --------------
-To see help press `Magic` + `H`.
+按 `Magic` + `H`查看帮助.
 
  `Magic` key bind may be `LShift` + `RShift` in many project, but `Power` key on ADB converter. `Magic` keybind can be vary on each project, check `config.h` in project directory.
 
 Following commands can be also executed with `Magic` + key. In console mode `Magic` keybind is not needed.
 
     ----- Command Help -----
-    c:      enter console mode
-    d:      toggle debug enable
-    x:      toggle matrix debug
-    k:      toggle keyboard debug
-    m:      toggle mouse debug
-    v:      print device version & info
-    t:      print timer count
-    s:      print status
-    e:	    print eeprom config
+    c:      进入命令行模式console model
+    d:      开关debug
+    x:      开关矩阵debug
+    k:      开关键盘debug
+    m:      开关鼠标debug
+    v:      输出版本号
+    t:      输出时间记录
+    s:      输出状态status
+    e:	    输出eeprom配置
     n:	    toggle NKRO
     0/F10:  switch to Layer0
     1/F1:   switch to Layer1
@@ -162,7 +162,7 @@ To avoid configuring accidentally additive salt key `KC_SPACE` also needs to be 
 - Swap BackSlash and BackSpace(`Back Slash`)
 - Enable NKRO on boot(`N`)
 
-#### Default Layer
+#### 默认层
 - Set Default Layer to 0(`0`)
 - Set Default Layer to 1(`1`)
 - Set Default Layer to 2(`2`)
@@ -172,26 +172,26 @@ To avoid configuring accidentally additive salt key `KC_SPACE` also needs to be 
 - Set Default Layer to 6(`6`)
 - Set Default Layer to 7(`7`)
 
-#### Caution
-Unintentional use of this feature will cause user confusion.
+#### 注意!
+使用此功能会导致用户混淆。
 
 TODO: Magic key combination to avoid unintentional press during plug in
 
 **TBD**
 
 
-Mechanical Locking support
+机械锁支持
 --------------------------
-This feature makes it possible for you to use mechanical switch for `CapsLock`, `NumLock` or `ScrollLock`. To enable this feature define these macros in `config.h` and use `KC_LCAP`, `KC_LNUM` or `KC_LSCR` in keymap for locking key instead of normal `KC_CAPS`, `KC_NLCK` or `KC_SLCK`. Resync option tries to keep lock switch state consistent with keyboard LED state.
+这个功能可以让您使用机械开关`CapsLock`, `NumLock` or `ScrollLock`。启用该功能`config.h` 和使用`KC_LCAP`, `KC_LNUM` or `KC_LSCR`在映射关键而不是正常的 `KC_CAPS`, `KC_NLCK` or `KC_SLCK`。同步选项尝试保持锁开关状态一致的LED键盘状态。
  
     #define LOCKING_SUPPORT_ENABLE
     #define LOCKING_RESYNC_ENABLE
 
 
-Start Your Own Project
+开始建立你自己的项目
 -----------------------
 **TBD**
-### Config.h Options
+### Config.h 选项
 #### 1. USB vendor/product ID and device description
     #define VENDOR_ID       0xFEED
     #define PRODUCT_ID      0xBEEF
@@ -206,9 +206,9 @@ Start Your Own Project
 
 
 
-Architecture
+项目图解
 ------------
-    Architecture Diagram
+    架构图
                                +---------------+---------------+-------------+
                                |    Host       |   Keyboard    | Matrix, LED |
        ___________             |-----------+-+ +-------------+ | +-----------|
@@ -224,24 +224,24 @@ Architecture
 
 
 
-Debugging
+调试
 --------
-Use PJRC's `hid_listen` to see debug messages. You can use the tool for debug even if firmware use LUFA stack.
+使用 PJRC 的 `hid_listen` 来查看调试信息. 你可以使用的工具，即使使用该LUFA堆栈调试固件.
 
-You can use xprintf() to display debug info on `hid_listen`, see `common/xprintf.h`.
+你可以使用 xprintf() 显示调试信息 `hid_listen`, 查看文件 `common/xprintf.h`.
 
 
 
-Files and Directories
+项目文件和目录
 -------------------
 ### Top
-* common/       - common codes
-* protocol/     - keyboard protocol support
-* keyboard/     - keyboard projects
-* converter/    - protocol converter projects
-* doc/          - documents
+* common/       - 常用代码
+* protocol/     - 键盘协议支持
+* keyboard/     - 键盘项目
+* converter/    - 协议转换器项目
+* doc/          - 文档
 * common.mk     - Makefile for common
-* protocol.mk    - Makefile for protocol
+* protocol.mk   - Makefile for protocol
 * rules.mk      - Makefile for build rules
 
 ### Common
@@ -263,7 +263,7 @@ Files and Directories
 * timer.h
 * util.h
 
-### Keyboard Protocols
+### 键盘协议
 * lufa/     - LUFA USB stack
 * pjrc/     - PJRC USB stack
 * vusb/     - Objective Development V-USB
@@ -277,12 +277,16 @@ Files and Directories
 
 
 
-Coding Style
+代码风格
 -------------
-- Doesn't use Tab to indent, use 4-spaces instead.
+- 4个空格代替tab.
 
 
 
-Other Keyboard Firmware Projects
+其余项目
 ------------------
 See [doc/other_projects.md](doc/other_projects.md).
+
+
+
+
